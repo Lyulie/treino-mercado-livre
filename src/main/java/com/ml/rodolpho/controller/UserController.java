@@ -22,7 +22,7 @@ public class UserController {
     @Autowired
     private UserService userService;
 
-    @PostMapping(value = "signin")
+    @PostMapping(value = "signup")
     public ResponseEntity<UserDTOResponse> newUser (@Valid @RequestBody UserDTORequest dto) {
         
         User user = dto.toUser();

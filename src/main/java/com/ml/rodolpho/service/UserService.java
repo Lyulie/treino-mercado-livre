@@ -19,12 +19,12 @@ public class UserService {
     UserRepository userRepository;
 
     public User signUp(User user) {
-        validateSignIn(user);
+        validateSignUp(user);
         user.setPassword(BcryptEncoderService.encode(user.getPassword()));
         return userRepository.save(user);
     }
 
-    public void validateSignIn(User user) {
+    public void validateSignUp(User user) {
         if(userRepository.findByLogin(user.getLogin()) != null) {
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, USER_ALREADY_REGISTERED_MSG);
         }
